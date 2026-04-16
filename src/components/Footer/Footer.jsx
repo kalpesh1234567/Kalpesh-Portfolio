@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="flex flex-wrap justify-center space-x-4 mt-6">
           {[
             { icon: <FaLinkedin />, link: "https://linkedin.com/in/kalpesh-khairnar" },
-            { icon: <FaInstagram />, link: "https://www.instagram.com/kalpesh_khairnar_/" }, // Assuming a common handle or leaving template one? No, I'll stick to provided ones.
+            { icon: <FaInstagram />, link: "https://www.instagram.com/kalpesh_mali_11?igsh=MWs1MjQzYzJqaG9oZA==" },
           ].map((item, index) => (
             <a
               key={index}
@@ -55,7 +55,7 @@ const Footer = () => {
 
         {/* Copyright Text */}
         <p className="text-sm text-gray-400 mt-6">
-          © 2025 Kalpesh Khairnar. All rights reserved.
+          © 2026 Kalpesh Khairnar. All rights reserved.
         </p>
       </div>
     </footer>

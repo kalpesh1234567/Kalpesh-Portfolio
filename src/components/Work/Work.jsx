@@ -66,59 +66,74 @@ const Work = () => {
 
       {/* Modal Container */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4">
-          <div className="bg-gray-900 rounded-xl shadow-2xl lg:w-full w-[90%] max-w-3xl overflow-hidden relative">
-            <div className="flex justify-end p-4">
-              <button
-                onClick={handleCloseModal}
-                className="text-white text-3xl font-bold hover:text-purple-500"
-              >
-                &times;
-              </button>
-            </div>
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4"
+          onClick={handleCloseModal}
+        >
+          <div
+            className="bg-gray-900 rounded-xl shadow-2xl w-[95%] max-w-4xl overflow-hidden relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={handleCloseModal}
+              className="absolute top-3 right-4 text-white text-3xl font-bold hover:text-purple-500 z-10"
+            >
+              &times;
+            </button>
 
-            <div className="flex flex-col">
-              <div className="w-full flex justify-center bg-gray-900 px-4">
+            {/* Layout: side-by-side on lg, stacked on mobile */}
+            <div className="flex flex-col lg:flex-row max-h-[90vh]">
+
+              {/* Image Panel */}
+              <div className="lg:w-1/2 w-full bg-[#0d081f] flex items-center justify-center p-4 overflow-y-auto max-h-[45vh] lg:max-h-[90vh]">
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="lg:w-full w-[95%] object-contain rounded-xl shadow-2xl"
+                  className="rounded-xl shadow-2xl object-contain w-full"
+                  style={{ maxHeight: "100%" }}
                 />
               </div>
-              <div className="lg:p-8 p-6">
-                <h3 className="lg:text-3xl font-bold text-white mb-4 text-md">
-                  {selectedProject.title}
-                </h3>
-                <p className="text-gray-400 mb-6 lg:text-base text-xs">
-                  {selectedProject.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {selectedProject.tags.map((tag, index) => (
-                    <span
-                      key={index}
-                      className="bg-[#251f38] text-xs font-semibold text-purple-500 rounded-full px-2 py-1"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+
+              {/* Info Panel */}
+              <div className="lg:w-1/2 w-full overflow-y-auto max-h-[45vh] lg:max-h-[90vh] p-6 lg:p-8 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white mb-3">
+                    {selectedProject.title}
+                  </h3>
+                  <p className="text-gray-400 mb-5 text-sm lg:text-base leading-relaxed">
+                    {selectedProject.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {selectedProject.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="bg-[#251f38] text-xs font-semibold text-purple-500 rounded-full px-3 py-1"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex gap-4 mt-2">
                   <a
                     href={selectedProject.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-1/2 bg-gray-800 hover:bg-purple-800 text-gray-400 lg:px-6 lg:py-2 px-2 py-1 rounded-xl lg:text-xl text-sm font-semibold text-center"
+                    className={`${selectedProject.webapp && selectedProject.webapp !== "#" ? "w-1/2" : "w-full"} bg-gray-800 hover:bg-purple-800 text-gray-300 px-4 py-2 rounded-xl text-sm lg:text-base font-semibold text-center transition`}
                   >
                     View Code
                   </a>
-                  <a
-                    href={selectedProject.webapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-1/2 bg-purple-600 hover:bg-purple-800 text-white lg:px-6 lg:py-2 px-2 py-1 rounded-xl lg:text-xl text-sm font-semibold text-center"
-                  >
-                    View Live
-                  </a>
+                  {selectedProject.webapp && selectedProject.webapp !== "#" && (
+                    <a
+                      href={selectedProject.webapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-1/2 bg-purple-600 hover:bg-purple-800 text-white px-4 py-2 rounded-xl text-sm lg:text-base font-semibold text-center transition"
+                    >
+                      View Live
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

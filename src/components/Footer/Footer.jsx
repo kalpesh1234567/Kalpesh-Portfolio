@@ -38,7 +38,7 @@ const Footer = () => {
         {/* Social Media Icons - Responsive */}
         <div className="flex flex-wrap justify-center space-x-4 mt-6">
           {[
-            { icon: <FaLinkedin />, link: "https://linkedin.com/in/kalpesh-khairnar" },
+            { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/kalpesh-khairnar-22b507217/" },
             { icon: <FaInstagram />, link: "https://www.instagram.com/kalpesh_mali_11?igsh=MWs1MjQzYzJqaG9oZA==" },
           ].map((item, index) => (
             <a
